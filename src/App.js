@@ -31,8 +31,8 @@ class App extends Component {
   };
 
   getFilteredItems = () => {
-    // let filter = this.state.filter;
-    if (this.state.filter == "none") {
+    let filter = this.state.filter;
+    if (filter === "none") {
       this.setState({ filteredItems: this.state.allItems });
     } else {
       this.setState({ filteredItems: [] });

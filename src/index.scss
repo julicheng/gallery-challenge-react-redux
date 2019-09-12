@@ -10,7 +10,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     align-content: center;
     color: #fff;
-
+    box-shadow: 0 4px 2px -3px rgb(124, 124, 124);
     h1 {
       font-family: "Vidaloka", serif;
       text-align: center;
@@ -31,7 +31,7 @@
     padding-top: 100px;
     select {
       display: flex;
-      margin: 20px auto;
+      margin: 36px auto 20px;
     }
     .gallery {
       display: flex;
