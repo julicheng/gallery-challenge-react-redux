@@ -4,11 +4,13 @@
     width: 100%;
     position: fixed;
     height: 100px;
-    background: white;
+    background: #000;
     opacity: 0.8;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-content: center;
+    color: #fff;
+
     h1 {
       font-family: "Vidaloka", serif;
       text-align: center;
