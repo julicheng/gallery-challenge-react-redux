@@ -1,23 +1,56 @@
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
   header {
     width: 100%;
+    position: fixed;
+    height: 100px;
+    background: white;
+    opacity: 0.8;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-content: center;
+    h1 {
+      font-family: "Vidaloka", serif;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .logo {
+      align-self: center;
+      margin: 0 30px;
+    }
   }
 
   main {
-    background: aliceblue;
-    width: 100%;
+    background: white;
     padding: 1em 0;
+    width: 100%;
+    margin: 0 auto;
+    // background: pink;
+    padding-top: 100px;
+    select {
+      display: flex;
+      margin: 20px auto;
+    }
     .gallery {
       display: flex;
       flex-wrap: wrap;
       margin: 0 auto;
       justify-content: center;
-      width: 70%;
+      //   width: 70%;
+      max-width: 800px;
       .item {
         margin: 20px;
+        border: 1px inset black;
+        padding: 3px;
       }
+    }
+  }
+  footer {
+    width: 100%;
+    padding: 10px 0;
+    margin: 20px 0;
+    h3 {
+      text-align: center;
     }
   }
 }
