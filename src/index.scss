@@ -14,7 +14,11 @@
     h1 {
       font-family: "Vidaloka", serif;
       text-align: center;
-      padding: 0 20px;
+      padding: 10px 20px;
+      @media (max-width: 587px) {
+        padding: 3px 20px;
+      }
+      border: 2px solid white;
     }
     .logo {
       align-self: center;

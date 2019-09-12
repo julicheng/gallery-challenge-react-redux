@@ -10,7 +10,10 @@ class App extends Component {
   componentDidMount() {
     fetch(`http://axielldevtest.eastus2.cloudapp.azure.com:3000/api/media`)
       .then(response => response.json())
-      .then(this.getItems);
+      .then(this.getItems)
+      .catch(function() {
+        console.log("Error getting items");
+      });
   }
 
   getItems = data => {
@@ -35,17 +38,12 @@ class App extends Component {
     if (filter === "none") {
       this.setState({ filteredItems: this.state.allItems });
     } else {
-      this.setState({ filteredItems: [] });
+      let newFilteredItems = this.state.allItems.filter(item => {
+        return item.tags.includes(filter);
+      });
+      this.setState({ filteredItems: newFilteredItems });
     }
   };
-
-  // getResults = () => {
-  //   let filter = this.state.filter;
-  //   let resultList = this.animeList.filter(title => {
-  //     return title.genre.toLowerCase() === filter;
-  //   });
-  //   this.setState({ results: resultList });
-  // };
 
   render() {
     return (
