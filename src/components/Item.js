@@ -1,9 +1,22 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import ItemInfo from "./ItemInfo";
 
 class Item extends Component {
-  state = {};
+  itemId = this.props.item.id;
+  url = "/item/" + this.itemId;
   render() {
-    return <img className="item" src={this.props.thumbnailUrl} alt="hello" />;
+    return (
+      <div>
+        <Link to={"/item"}>
+          <img
+            className="item"
+            src={this.props.item.thumbnailUrl}
+            alt={this.props.item.title}
+          />
+        </Link>
+      </div>
+    );
   }
 }
 

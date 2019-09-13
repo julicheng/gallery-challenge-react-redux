@@ -1,62 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 import Header from "./components/Header";
-import Filter from "./components/Filter";
 import Gallery from "./components/Gallery";
 import Footer from "./components/Footer";
+import ItemDetail from "./components/ItemDetail";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-class App extends Component {
-  state = { filter: "none", filteredItems: [], allItems: [] };
-
-  componentDidMount() {
-    fetch(`http://axielldevtest.eastus2.cloudapp.azure.com:3000/api/media`)
-      .then(response => response.json())
-      .then(this.getItems)
-      .catch(function() {
-        console.log("Error getting items");
-      });
-  }
-
-  getItems = data => {
-    this.setState(
-      {
-        allItems: data.media
-      },
-      () => {
-        this.getFilteredItems();
-      }
-    );
-  };
-
-  handleChange = event => {
-    this.setState({ filter: event }, () => {
-      this.getFilteredItems();
-    });
-  };
-
-  getFilteredItems = () => {
-    let filter = this.state.filter;
-    if (filter === "none") {
-      this.setState({ filteredItems: this.state.allItems });
-    } else {
-      let newFilteredItems = this.state.allItems.filter(item => {
-        return item.tags.includes(filter);
-      });
-      this.setState({ filteredItems: newFilteredItems });
-    }
-  };
-
-  render() {
-    return (
-      <React.Fragment>
-        <Header title="Art Gallery" />
+const App = () => {
+  return (
+    <>
+      <Header title="Art Gallery" />
+      <Router>
         <main>
-          <Filter handleChange={this.handleChange} filter={this.state.filter} />
-          <Gallery filteredItems={this.state.filteredItems} />
+          <Route exact path="/" component={Gallery} />
+          <Route exact path="/item/:itemid" component={ItemDetail} />
         </main>
-        <Footer />
-      </React.Fragment>
-    );
-  }
-}
+      </Router>
+      <Footer />
+    </>
+  );
+};
 
 export default App;
