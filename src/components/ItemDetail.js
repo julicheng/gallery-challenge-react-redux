@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class ItemDetail extends Component {
   state = { title: "", description: "", url: "" };
@@ -25,13 +26,20 @@ class ItemDetail extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <img src={this.state.url} alt={this.state.title} />
+      <div className="itemDetail">
+        <div className="imageSection">
+          <img
+            src={this.state.url}
+            alt={this.state.title}
+            className="largeImage"
+          />
         </div>
-        <div>
+        <div class="descriptionSection">
           <h2>{this.state.title}</h2>
           <p>{this.state.description}</p>
+          <h3>
+            <Link to={"/"}>Back to gallery</Link>
+          </h3>
         </div>
       </div>
     );

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Link } from "react-router-dom";
-// import ItemInfo from "./ItemInfo";
+import { Link } from "react-router-dom";
 
 class Item extends Component {
   itemId = this.props.item._id;
