@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 class ItemDetail extends Component {
   state = { title: "", description: "", url: "" };
 
+  // fetch item from api that matches the id the user has selected
   componentDidMount() {
     const itemId = this.props.match.params.itemid;
     fetch(
@@ -16,6 +17,7 @@ class ItemDetail extends Component {
       });
   }
 
+  // assign values fetched from api to data fields needed
   printItems = data => {
     this.setState({
       title: data.title,

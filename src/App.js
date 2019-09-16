@@ -11,6 +11,7 @@ const App = () => {
       <Header title="Art Gallery" />
       <Router>
         <main>
+          {/* render main component depending on url */}
           <Route exact path="/" component={Gallery} />
           <Route exact path="/item/:itemid" component={ItemDetail} />
         </main>

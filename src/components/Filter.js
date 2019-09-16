@@ -5,6 +5,7 @@ const Filter = props => {
     <select
       value={props.filter}
       onChange={event => props.handleChange(event.target.value)}
+      aria-label="art category"
     >
       <option value="none">Please select</option>
       <option value="abstract">Abstract</option>

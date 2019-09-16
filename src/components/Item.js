@@ -6,6 +6,7 @@ class Item extends Component {
   render() {
     return (
       <div>
+        {/* link each item to an item page with the url with the id of the item */}
         <Link to={"/item/" + this.itemId}>
           <img
             className="item"
