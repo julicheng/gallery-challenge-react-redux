@@ -48,6 +48,9 @@
         border: 1px inset black;
         padding: 3px;
       }
+      .item:hover {
+        box-shadow: 0 0 20px rgb(117, 116, 116);
+      }
     }
     .itemDetail {
       display: flex;
