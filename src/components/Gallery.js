@@ -11,7 +11,7 @@ class Gallery extends Component {
 
   // fetch items from api and assign to allItems
   componentDidMount() {
-    fetch(`http://axielldevtest.eastus2.cloudapp.azure.com:3000/api/media`)
+    fetch(`http://185.121.204.130:8080/api/media/`)
       .then(response => response.json())
       .then(this.getItems)
       .catch(function() {
