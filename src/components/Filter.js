@@ -1,10 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
 
 const Filter = props => {
   return (
     <select
       value={props.filter}
-      onChange={event => props.handleChange(event.target.value)}
+      onChange={props.handleChange}
       aria-label="art category"
     >
       <option value="none">Please select</option>
@@ -19,4 +20,20 @@ const Filter = props => {
   );
 };
 
-export default Filter;
+const mapStateToProps = state => {
+  console.log("mapStateToProps", state);
+  return {
+    count: state.filter
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleChange: evt => {
+      const action = { type: "CHANGE_FILTER", payload: evt.target.value };
+      dispatch(action);
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

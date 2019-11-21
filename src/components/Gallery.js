@@ -52,7 +52,7 @@ class Gallery extends Component {
   render() {
     return (
       <>
-        <Filter handleChange={this.handleChange} filter={this.state.filter} />
+        <Filter />
         <div className="gallery">
           {this.state.filteredItems.map((item, key) => {
             return <Item key={key} id={item._id} item={item} />;
