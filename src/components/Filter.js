@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { changeFilter } from "../actions";
 
 const Filter = props => {
   return (
@@ -30,8 +31,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     handleChange: evt => {
-      const action = { type: "CHANGE_FILTER", payload: evt.target.value };
-      dispatch(action);
+      dispatch(changeFilter(evt));
     }
   };
 };
