@@ -1,4 +1,6 @@
-const filteredItems = (state = [], action) => {
+const initialState = { filteredItems: [] };
+
+const filteredItems = (state = initialState, action) => {
   switch (action.type) {
     case "GET_FILTERED_ITEMS":
       return { ...state, filter: action.payload };

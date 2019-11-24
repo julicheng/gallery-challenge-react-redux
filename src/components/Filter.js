@@ -24,7 +24,7 @@ const Filter = props => {
 const mapStateToProps = state => {
   console.log("mapStateToProps", state);
   return {
-    count: state.filter
+    filter: state.filter
   };
 };
 

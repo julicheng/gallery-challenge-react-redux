@@ -1,4 +1,6 @@
-const filter = (state = "none", action) => {
+const initialState = { filter: "none" };
+
+const filter = (state = initialState, action) => {
   switch (action.type) {
     case "CHANGE_FILTER":
       return action.payload;
