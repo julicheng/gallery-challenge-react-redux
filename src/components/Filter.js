@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { changeFilter } from "../actions";
+import { updateFilteredItems } from "../actions";
 
 const Filter = props => {
   return (
     <select
-      value={props.filter}
+      // value={props.filter}
       onChange={props.handleChange}
       aria-label="art category"
     >
@@ -24,14 +24,15 @@ const Filter = props => {
 const mapStateToProps = state => {
   console.log("mapStateToProps", state);
   return {
-    filter: state.filter
+    // filter: state.filter,
+    filteredItems: state.filteredItems
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     handleChange: evt => {
-      dispatch(changeFilter(evt));
+      dispatch(updateFilteredItems(evt));
     }
   };
 };
