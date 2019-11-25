@@ -1,14 +1,12 @@
 import { combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import filter from "./filter";
-import filteredItems from "./filteredItems";
-import allItems from "./allItems";
+import items from "./items";
+import item from "./item";
 
 export default combineReducers(
   {
-    filter,
-    filteredItems,
-    allItems
+    items,
+    item
   },
   applyMiddleware(thunk)
 );

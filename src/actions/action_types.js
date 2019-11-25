@@ -1,0 +1,1 @@
+export const GET_FILTERED_ITEMS = "GET_FILTERED_ITEMS";

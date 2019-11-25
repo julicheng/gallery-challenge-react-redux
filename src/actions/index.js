@@ -1,33 +1,54 @@
 import { store } from "../App";
+import { GET_FILTERED_ITEMS } from "../actions/action_types";
 
-export const fetchItems = items => {
+export const fetchItems = () => {
+  // const request = fetch(`http://185.121.204.130:8080/api/media/`)
+  //   .then(response => response.json())
+  //   .then(response => {
+  //     console.log(response.media);
+  //     return response.media;
+  //   })
+  //   .catch(function() {
+  //     console.log("Error getting items");
+  //   });
+  // console.log(request);
+  // return {
+  //   type: "FETCH_ITEMS",
+  //   payload: request
+  // };
+  return dispatch => {
+    fetch(`http://185.121.204.130:8080/api/media/`)
+      .then(response => response.json())
+      .then(response => {
+        dispatch(itemsFetchDataSuccess(response.media));
+      })
+      .catch(function() {
+        console.log("Error getting items");
+      });
+  };
+};
+
+const itemsFetchDataSuccess = items => {
   return {
-    type: "FETCH_ITEMS",
+    type: "ITEMS_FETCH_DATA_SUCCESS",
     items
   };
 };
 
-export const fetchItem = item => {
+export const fetchItem = id => {
   return {
     type: "FETCH_ITEM",
-    item
+    id
   };
 };
 
-export const getFilteredItems = items => {
-  return {
-    type: "GET_FILTERED_ITEMS",
-    items
-  };
-};
-
-export const updateFilteredItems = evt => {
-  const filter = evt.target.value;
+export const getFilteredItems = evt => {
+  const filter = evt;
 
   switch (filter) {
     case "none":
       return {
-        type: "UPDATE_FILTERED_ITEMS",
+        type: GET_FILTERED_ITEMS,
         payload: store.getState().allItems.allItems
       };
     default:
@@ -37,7 +58,7 @@ export const updateFilteredItems = evt => {
           return item.tags.includes(filter);
         });
       return {
-        type: "UPDATE_FILTERED_ITEMS",
+        type: GET_FILTERED_ITEMS,
         payload: newFilteredItems
       };
   }

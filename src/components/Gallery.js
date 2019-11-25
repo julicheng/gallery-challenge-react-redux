@@ -3,16 +3,11 @@ import Item from "./Item";
 import Filter from "./Filter";
 import { connect } from "react-redux";
 import { store } from "../App";
-
+import { fetchItems } from "../actions";
 class Gallery extends Component {
   // fetch items from api and assign to allItems
   componentDidMount() {
-    fetch(`http://185.121.204.130:8080/api/media/`)
-      .then(response => response.json())
-      .then(this.getItems)
-      .catch(function() {
-        console.log("Error getting items");
-      });
+    this.props.dispatch(fetchItems());
   }
 
   // getItems = data => {
@@ -31,7 +26,7 @@ class Gallery extends Component {
       <>
         <Filter />
         <div className="gallery">
-          {store.getState().filteredItems.filteredItems.map((item, key) => {
+          {store.getState().items.filteredItems.map((item, key) => {
             return <Item key={key} id={item._id} item={item} />;
           })}
         </div>
@@ -46,12 +41,8 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    // handleChange: evt => {
-    //   dispatch(changeFilter(evt));
-    // }
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return { fetchItems: () => dispatch(fetchItems) };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Gallery);
+export default connect(mapStateToProps)(Gallery);
