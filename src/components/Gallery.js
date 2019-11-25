@@ -7,7 +7,7 @@ import { fetchItems } from "../actions";
 class Gallery extends Component {
   // fetch items from api and assign to allItems
   componentDidMount() {
-    // this.props.fetchItems();
+    this.props.fetchItems();
   }
 
   render() {
@@ -30,4 +30,12 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchItems })(Gallery);
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchItems: () => {
+      dispatch(fetchItems());
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Gallery);

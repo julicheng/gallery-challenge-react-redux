@@ -1,12 +1,8 @@
-import { combineReducers, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
+import { combineReducers } from "redux";
 import items from "./items";
 import item from "./item";
 
-export default combineReducers(
-  {
-    items,
-    item
-  },
-  applyMiddleware(thunk)
-);
+export default combineReducers({
+  items,
+  item
+});
