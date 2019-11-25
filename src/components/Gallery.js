@@ -7,19 +7,8 @@ import { fetchItems } from "../actions";
 class Gallery extends Component {
   // fetch items from api and assign to allItems
   componentDidMount() {
-    this.props.dispatch(fetchItems());
+    // this.props.fetchItems();
   }
-
-  // getItems = data => {
-  //   this.setState(
-  //     {
-  //       allItems: data.media
-  //     },
-  //     () => {
-  //       this.getFilteredItems();
-  //     }
-  //   );
-  // };
 
   render() {
     return (
@@ -37,12 +26,8 @@ class Gallery extends Component {
 
 const mapStateToProps = state => {
   return {
-    filteredItems: state.filteredItems
+    filteredItems: state.items
   };
 };
 
-// const mapDispatchToProps = dispatch => {
-//   return { fetchItems: () => dispatch(fetchItems) };
-// };
-
-export default connect(mapStateToProps)(Gallery);
+export default connect(mapStateToProps, { fetchItems })(Gallery);
