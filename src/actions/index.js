@@ -19,17 +19,16 @@ export const fetchItems = () => dispatch => {
     });
 };
 
-export const fetchItem = itemId => (itemId, dispatch) => {
-  console.log(itemId);
+export const fetchItem = itemId => dispatch => {
   fetch(`http://185.121.204.130:8080/api/media/` + itemId)
     .then(res => res.json())
     .then(res =>
       dispatch({
         type: FETCH_ITEM,
         payload: {
-          title: res.media.title,
-          description: res.media.description,
-          url: res.media.url
+          title: res.title,
+          description: res.description,
+          url: res.url
         }
       })
     )

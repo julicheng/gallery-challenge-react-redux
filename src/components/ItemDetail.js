@@ -41,8 +41,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchItem: () => {
-      dispatch(fetchItem());
+    fetchItem: itemId => {
+      dispatch(fetchItem(itemId));
     }
   };
 };
