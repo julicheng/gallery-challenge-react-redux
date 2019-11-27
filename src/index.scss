@@ -98,10 +98,19 @@
       margin: 3px;
       border: 1px solid black;
       border-radius: 5px;
+      text-decoration: none;
+      color: black;
+      .page-link {
+        text-decoration: none;
+        color: black;
+      }
     }
     .page-item:active {
       background: rgb(19, 18, 18);
-      color: white;
+      text-decoration: none;
+      .page-link:active {
+        color: white;
+      }
     }
   }
 }

@@ -10,7 +10,9 @@ const Pagination = props => {
       <ul className="pagination">
         {pageNumbers.map(number => (
           <li key={number} className="page-item">
-            <a className="page-link">{number}</a>
+            <a href="/" className="page-link">
+              {number}
+            </a>
           </li>
         ))}
       </ul>
