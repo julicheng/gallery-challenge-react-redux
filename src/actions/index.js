@@ -2,7 +2,8 @@ import { store } from "../App";
 import {
   GET_FILTERED_ITEMS,
   FETCH_ITEMS,
-  FETCH_ITEM
+  FETCH_ITEM,
+  SET_CURRENT_PAGE
 } from "../actions/action_types";
 
 export const fetchItems = () => dispatch => {
@@ -56,3 +57,5 @@ export const getFilteredItems = evt => {
       };
   }
 };
+
+export const setCurrentPage = evt => {};

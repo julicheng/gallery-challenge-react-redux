@@ -1,3 +1,5 @@
+import { GET_FILTERED_ITEMS, FETCH_ITEMS } from "../actions/action_types";
+
 const initialState = {
   allItems: [],
   filteredItems: []
@@ -5,9 +7,9 @@ const initialState = {
 
 const items = (state = initialState, action) => {
   switch (action.type) {
-    case "GET_FILTERED_ITEMS":
+    case GET_FILTERED_ITEMS:
       return { ...state, filteredItems: action.payload };
-    case "FETCH_ITEMS":
+    case FETCH_ITEMS:
       return {
         ...state,
         filteredItems: action.payload,

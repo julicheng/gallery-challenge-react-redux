@@ -1,3 +1,4 @@
 export const GET_FILTERED_ITEMS = "GET_FILTERED_ITEMS";
 export const FETCH_ITEMS = "FETCH_ITEMS";
 export const FETCH_ITEM = "FETCH_ITEM";
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";

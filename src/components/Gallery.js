@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Item from "./Item";
 import Filter from "./Filter";
+import Pagination from "./Pagination";
 import { connect } from "react-redux";
 import { store } from "../App";
 import { fetchItems } from "../actions";
@@ -19,6 +20,7 @@ class Gallery extends Component {
             return <Item key={key} id={item._id} item={item} />;
           })}
         </div>
+        <Pagination totalItems={store.getState().items.filteredItems.length} />
       </>
     );
   }
