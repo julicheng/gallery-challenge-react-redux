@@ -5,11 +5,19 @@ import Footer from "./components/Footer";
 import ItemDetail from "./components/ItemDetail";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./reducers";
 import thunk from "redux-thunk";
 
-export const store = createStore(rootReducer, applyMiddleware(thunk));
+export const store = createStore(
+  rootReducer,
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__
+      ? window.__REDUX_DEVTOOLS_EXTENSION__()
+      : f => f
+  )
+);
 
 const App = () => {
   return (
