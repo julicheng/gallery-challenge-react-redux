@@ -22,15 +22,15 @@ export const store = createStore(
 const App = () => {
   return (
     <Provider store={store}>
-      <Header title="Art Gallery" />
       <Router>
+        <Header title="Art Gallery" />
         <main>
           {/* render main component depending on url */}
           <Route exact path="/" component={Gallery} />
           <Route exact path="/item/:itemid" component={ItemDetail} />
         </main>
+        <Footer />
       </Router>
-      <Footer />
     </Provider>
   );
 };
