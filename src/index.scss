@@ -108,7 +108,11 @@
     .page-item:active {
       background: rgb(19, 18, 18);
       text-decoration: none;
-      .page-link:active {
+      .page-link:active,
+      .page-link:link,
+      .page-link:focus,
+      .page-link:visited,
+      .page-link:hover {
         color: white;
       }
     }
