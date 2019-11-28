@@ -4,11 +4,11 @@ import Filter from "./Filter";
 import Pagination from "./Pagination";
 import { connect } from "react-redux";
 import { store } from "../App";
-import { fetchItems } from "../actions";
+import { fetchItems, setPaginatedItems } from "../actions";
 class Gallery extends Component {
   // fetch items from api and assign to allItems
   componentDidMount() {
-    this.props.fetchItems();
+    this.props.init();
   }
   render() {
     console.log(store.getState());
@@ -16,7 +16,7 @@ class Gallery extends Component {
       <>
         <Filter />
         <div className="gallery">
-          {store.getState().pagination.paginatedList.map((item, key) => {
+          {store.getState().items.paginatedItems.map((item, key) => {
             return <Item key={key} id={item._id} item={item} />;
           })}
         </div>
@@ -29,14 +29,15 @@ class Gallery extends Component {
 const mapStateToProps = state => {
   return {
     filteredItems: state.items,
-    paginatedList: state.pagination
+    paginatedItems: state.items
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchItems: () => {
+    init: () => {
       dispatch(fetchItems());
+      dispatch(setPaginatedItems());
     }
   };
 };

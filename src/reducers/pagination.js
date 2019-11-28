@@ -1,9 +1,8 @@
-import { SET_CURRENT_PAGE, SET_PAGINATED_LIST } from "../actions/action_types";
+import { SET_CURRENT_PAGE } from "../actions/action_types";
 
 const initialState = {
   currentPage: 1,
-  itemsPerPage: 4,
-  paginatedList: []
+  itemsPerPage: 4
 };
 
 const pagination = (state = initialState, action) => {
@@ -12,11 +11,6 @@ const pagination = (state = initialState, action) => {
       return {
         ...state,
         currentPage: action.payload
-      };
-    case SET_PAGINATED_LIST:
-      return {
-        ...state,
-        paginatedList: action.payload
       };
     default:
       return state;

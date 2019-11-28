@@ -1,7 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { store } from "../App";
-import { getFilteredItems, setCurrentPage, setPaginatedList } from "../actions";
+import {
+  getFilteredItems,
+  setCurrentPage,
+  setPaginatedItems
+} from "../actions";
 
 const Filter = props => {
   return (
@@ -22,8 +25,8 @@ const mapDispatchToProps = dispatch => {
   return {
     handleFilterChange: evt => {
       dispatch(getFilteredItems(evt.target.value));
-      dispatch(setPaginatedList());
-      dispatch(setCurrentPage(store.getState().pagination.currentPage));
+      dispatch(setCurrentPage());
+      dispatch(setPaginatedItems());
     }
   };
 };

@@ -4,7 +4,7 @@ import {
   FETCH_ITEMS,
   FETCH_ITEM,
   SET_CURRENT_PAGE,
-  SET_PAGINATED_LIST
+  SET_PAGINATED_ITEMS
 } from "../actions/action_types";
 
 export const fetchItems = () => dispatch => {
@@ -59,14 +59,14 @@ export const getFilteredItems = evt => {
   }
 };
 
-export const setCurrentPage = page => {
+export const setCurrentPage = (page = 1) => {
   return {
     type: SET_CURRENT_PAGE,
     payload: page
   };
 };
 
-export const setPaginatedList = () => {
+export const setPaginatedItems = () => {
   const indexOfLastItem =
     store.getState().pagination.currentPage *
     store.getState().pagination.itemsPerPage;
@@ -76,7 +76,7 @@ export const setPaginatedList = () => {
     .getState()
     .items.filteredItems.slice(indexOfFirstItem, indexOfLastItem);
   return {
-    type: SET_PAGINATED_LIST,
+    type: SET_PAGINATED_ITEMS,
     payload: paginatedItems
   };
 };

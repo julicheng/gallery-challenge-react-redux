@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { store } from "../App";
-import { setCurrentPage, setPaginatedList } from "../actions";
+import { setCurrentPage, setPaginatedItems } from "../actions";
 
 const Pagination = props => {
   const pageNumbers = [];
@@ -45,7 +45,7 @@ const mapDispatchToProps = dispatch => {
   return {
     handlePageClick: page => {
       dispatch(setCurrentPage(page));
-      dispatch(setPaginatedList());
+      dispatch(setPaginatedItems());
     }
   };
 };
