@@ -10,13 +10,13 @@ class Gallery extends Component {
   componentDidMount() {
     this.props.fetchItems();
   }
-
   render() {
+    console.log(store.getState());
     return (
       <>
         <Filter />
         <div className="gallery">
-          {store.getState().items.filteredItems.map((item, key) => {
+          {store.getState().pagination.paginatedList.map((item, key) => {
             return <Item key={key} id={item._id} item={item} />;
           })}
         </div>
@@ -28,7 +28,8 @@ class Gallery extends Component {
 
 const mapStateToProps = state => {
   return {
-    filteredItems: state.items
+    filteredItems: state.items,
+    paginatedList: state.pagination
   };
 };
 

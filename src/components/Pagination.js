@@ -1,13 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import { store } from "../App";
-import { setCurrentPage } from "../actions";
+import { setCurrentPage, setPaginatedList } from "../actions";
 
 const Pagination = props => {
   const pageNumbers = [];
   for (
     let i = 1;
-    i <= Math.ceil(store.getState().items.filteredItems.length / 4);
+    i <=
+    Math.ceil(
+      store.getState().items.filteredItems.length /
+        store.getState().pagination.itemsPerPage
+    );
     i++
   ) {
     pageNumbers.push(i);
@@ -18,7 +22,7 @@ const Pagination = props => {
         {pageNumbers.map(number => (
           <li key={number} className="page-item">
             <a
-              onClick={() => props.setCurrentPage(number)}
+              onClick={() => props.handlePageClick(number)}
               href="/#"
               className="page-link"
             >
@@ -39,8 +43,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setCurrentPage: page => {
+    handlePageClick: page => {
       dispatch(setCurrentPage(page));
+      dispatch(setPaginatedList());
     }
   };
 };

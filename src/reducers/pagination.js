@@ -1,17 +1,23 @@
-import { SET_CURRENT_PAGE } from "../actions/action_types";
+import { SET_CURRENT_PAGE, SET_PAGINATED_LIST } from "../actions/action_types";
 
 const initialState = {
-  currentPage: 1
+  currentPage: 1,
+  itemsPerPage: 4,
+  paginatedList: []
 };
-
-// const indexOfLastItem = currentPage * itemsPerPage;
-// const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-// const currentItems = posts.slice(indexOfFirstItem, indexOfLastItem);
 
 const pagination = (state = initialState, action) => {
   switch (action.type) {
     case SET_CURRENT_PAGE:
-      return state;
+      return {
+        ...state,
+        currentPage: action.payload
+      };
+    case SET_PAGINATED_LIST:
+      return {
+        ...state,
+        paginatedList: action.payload
+      };
     default:
       return state;
   }

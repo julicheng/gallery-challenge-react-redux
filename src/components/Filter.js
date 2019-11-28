@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getFilteredItems } from "../actions";
+import { store } from "../App";
+import { getFilteredItems, setCurrentPage, setPaginatedList } from "../actions";
 
 const Filter = props => {
   return (
-    <select onChange={props.handleChange} aria-label="art category">
+    <select onChange={props.handleFilterChange} aria-label="art category">
       <option value="none">Please select</option>
       <option value="abstract">Abstract</option>
       <option value="impressionism">Impressionism</option>
@@ -19,8 +20,10 @@ const Filter = props => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleChange: evt => {
+    handleFilterChange: evt => {
       dispatch(getFilteredItems(evt.target.value));
+      dispatch(setPaginatedList());
+      dispatch(setCurrentPage(store.getState().pagination.currentPage));
     }
   };
 };
