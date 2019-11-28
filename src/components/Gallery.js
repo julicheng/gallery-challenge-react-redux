@@ -20,7 +20,10 @@ class Gallery extends Component {
             return <Item key={key} id={item._id} item={item} />;
           })}
         </div>
-        <Pagination totalItems={store.getState().items.filteredItems.length} />
+        <Pagination
+          totalItems={store.getState().items.filteredItems.length}
+          setCurrentPage={this.props.setCurrentPage}
+        />
       </>
     );
   }
@@ -36,6 +39,9 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchItems: () => {
       dispatch(fetchItems());
+    },
+    setCurrentPage: page => {
+      console.log(page);
     }
   };
 };
