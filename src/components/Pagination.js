@@ -1,8 +1,15 @@
 import React from "react";
+import { connect } from "react-redux";
+import { store } from "../App";
+import { setCurrentPage } from "../actions";
 
 const Pagination = props => {
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(props.totalItems / 4); i++) {
+  for (
+    let i = 1;
+    i <= Math.ceil(store.getState().items.filteredItems.length / 4);
+    i++
+  ) {
     pageNumbers.push(i);
   }
   return (
@@ -11,8 +18,8 @@ const Pagination = props => {
         {pageNumbers.map(number => (
           <li key={number} className="page-item">
             <a
-              onClick={props.setCurrentPage(number)}
-              href="/"
+              onClick={() => props.setCurrentPage(number)}
+              href="/#"
               className="page-link"
             >
               {number}
@@ -24,4 +31,18 @@ const Pagination = props => {
   );
 };
 
-export default Pagination;
+const mapStateToProps = state => {
+  return {
+    filteredItems: state.items
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setCurrentPage: page => {
+      dispatch(setCurrentPage(page));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pagination);

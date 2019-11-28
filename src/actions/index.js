@@ -58,4 +58,10 @@ export const getFilteredItems = evt => {
   }
 };
 
-export const setCurrentPage = evt => {};
+export const setCurrentPage = page => {
+  console.log(page);
+  return {
+    type: SET_CURRENT_PAGE,
+    payload: page
+  };
+};
