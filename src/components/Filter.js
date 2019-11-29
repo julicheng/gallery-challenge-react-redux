@@ -22,7 +22,6 @@ const Filter = props => {
 };
 
 const mapStateToProps = state => {
-  console.log("mapStateToProps", state);
   return {
     filter: state.items.filter
   };
