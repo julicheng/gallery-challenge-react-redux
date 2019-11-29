@@ -11,7 +11,6 @@ class Gallery extends Component {
     this.props.init();
   }
   render() {
-    console.log(store.getState());
     return (
       <>
         <Filter />

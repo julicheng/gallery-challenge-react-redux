@@ -8,32 +8,40 @@ import {
 } from "../actions/action_types";
 
 export const fetchItems = (offset = 0) => async dispatch => {
-  const res = await fetch(
-    `http://185.121.204.130:8080/api/media?offset=` + offset
-  );
+  try {
+    const res = await fetch(
+      `http://185.121.204.130:8080/api/media?offset=` + offset
+    );
 
-  const data = await res.json();
+    const data = await res.json();
 
-  dispatch({
-    type: FETCH_ITEMS,
-    payload: data.media
-  });
+    dispatch({
+      type: FETCH_ITEMS,
+      payload: data.media
+    });
 
-  dispatch(getFilteredItems());
+    dispatch(getFilteredItems());
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const fetchItem = itemId => async dispatch => {
-  const res = fetch(`http://185.121.204.130:8080/api/media/` + itemId);
-  const data = await res.json();
+  try {
+    const res = await fetch(`http://185.121.204.130:8080/api/media/` + itemId);
+    const data = await res.json();
 
-  dispatch({
-    type: FETCH_ITEM,
-    payload: {
-      title: data.title,
-      description: data.description,
-      url: data.url
-    }
-  });
+    dispatch({
+      type: FETCH_ITEM,
+      payload: {
+        title: data.title,
+        description: data.description,
+        url: data.url
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getFilteredItems = () => {
