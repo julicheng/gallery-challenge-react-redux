@@ -4,7 +4,11 @@ import { getFilteredItems, setFilter } from "../actions";
 
 const Filter = props => {
   return (
-    <select onChange={props.handleFilterChange} aria-label="art category">
+    <select
+      value={props.filter}
+      onChange={props.handleFilterChange}
+      aria-label="art category"
+    >
       <option value="none">Please select</option>
       <option value="abstract">Abstract</option>
       <option value="impressionism">Impressionism</option>
@@ -17,6 +21,13 @@ const Filter = props => {
   );
 };
 
+const mapStateToProps = state => {
+  console.log("mapStateToProps", state);
+  return {
+    filter: state.items.filter
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     handleFilterChange: evt => {
@@ -26,4 +37,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Filter);
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);
