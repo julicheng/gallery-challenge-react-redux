@@ -3,7 +3,6 @@ import Item from "./Item";
 import Filter from "./Filter";
 import Pagination from "./Pagination";
 import { connect } from "react-redux";
-import { store } from "../App";
 import { fetchItems } from "../actions";
 class Gallery extends Component {
   // fetch items from api and assign to allItems
@@ -11,12 +10,11 @@ class Gallery extends Component {
     this.props.init();
   }
   render() {
-    console.log(store.getState().items.filteredItems);
     return (
       <>
         <Filter />
         <div className="gallery">
-          {store.getState().items.filteredItems.map((item, key) => {
+          {this.props.filteredItems.map((item, key) => {
             return <Item key={key} id={item._id} item={item} />;
           })}
         </div>
@@ -28,7 +26,7 @@ class Gallery extends Component {
 
 const mapStateToProps = state => {
   return {
-    filteredItems: state.items
+    filteredItems: state.items.filteredItems
   };
 };
 

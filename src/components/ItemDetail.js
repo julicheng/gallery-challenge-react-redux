@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchItem } from "../actions";
-import { store } from "../App";
 
 class ItemDetail extends Component {
   // fetch item from api that matches the id the user has selected
@@ -16,14 +15,14 @@ class ItemDetail extends Component {
       <div className="itemDetail">
         <div className="imageSection">
           <img
-            src={store.getState().item.item.url}
-            alt={store.getState().item.item.title}
+            src={this.props.item.url}
+            alt={this.props.item.title}
             className="largeImage"
           />
         </div>
         <div className="descriptionSection">
-          <h2>{store.getState().item.item.title}</h2>
-          <p>{store.getState().item.item.description}</p>
+          <h2>{this.props.item.title}</h2>
+          <p>{this.props.item.description}</p>
           <h3>
             <Link to={"/"}>Back to gallery</Link>
           </h3>
@@ -35,7 +34,7 @@ class ItemDetail extends Component {
 
 const mapStateToProps = state => {
   return {
-    item: state.item
+    item: state.item.item
   };
 };
 
