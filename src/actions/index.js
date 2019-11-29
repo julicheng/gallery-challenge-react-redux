@@ -7,42 +7,37 @@ import {
   SET_FILTER
 } from "../actions/action_types";
 
-export const fetchItems = (offset = 0) => dispatch => {
-  fetch(`http://185.121.204.130:8080/api/media?offset=` + offset)
-    .then(res => res.json())
-    .then(res =>
-      dispatch({
-        type: FETCH_ITEMS,
-        payload: res.media
-      })
-    )
-    .catch(function() {
-      console.log("Error getting items");
-    });
+export const fetchItems = (offset = 0) => async dispatch => {
+  const res = await fetch(
+    `http://185.121.204.130:8080/api/media?offset=` + offset
+  );
+
+  const data = await res.json();
+
+  dispatch({
+    type: FETCH_ITEMS,
+    payload: data.media
+  });
+
   dispatch(getFilteredItems());
 };
 
-export const fetchItem = itemId => dispatch => {
-  fetch(`http://185.121.204.130:8080/api/media/` + itemId)
-    .then(res => res.json())
-    .then(res =>
-      dispatch({
-        type: FETCH_ITEM,
-        payload: {
-          title: res.title,
-          description: res.description,
-          url: res.url
-        }
-      })
-    )
-    .catch(function() {
-      console.log("Error getting items");
-    });
+export const fetchItem = itemId => async dispatch => {
+  const res = fetch(`http://185.121.204.130:8080/api/media/` + itemId);
+  const data = await res.json();
+
+  dispatch({
+    type: FETCH_ITEM,
+    payload: {
+      title: data.title,
+      description: data.description,
+      url: data.url
+    }
+  });
 };
 
 export const getFilteredItems = () => {
   const newfilter = store.getState().items.filter;
-  console.log(store.getState().items.allItems);
   switch (newfilter) {
     case "none":
       return {
