@@ -4,7 +4,7 @@ import Filter from "./Filter";
 import Pagination from "./Pagination";
 import { connect } from "react-redux";
 import { store } from "../App";
-import { fetchItems, getFilteredItems } from "../actions";
+import { fetchItems } from "../actions";
 class Gallery extends Component {
   // fetch items from api and assign to allItems
   componentDidMount() {
