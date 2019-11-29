@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { store } from "../App";
-import { setCurrentPage, setPaginatedItems } from "../actions";
+import { setOffset, fetchItems, getFilteredItems } from "../actions";
 
 const Pagination = props => {
   const pageNumbers = [];
@@ -18,19 +18,7 @@ const Pagination = props => {
   }
   return (
     <nav>
-      <ul className="pagination">
-        {pageNumbers.map(number => (
-          <li key={number} className="page-item">
-            <a
-              onClick={() => props.handlePageClick(number)}
-              href="/#"
-              className="page-link"
-            >
-              {number}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <button onClick={() => props.handleLoadMoreClick()}>Load more</button>
     </nav>
   );
 };
@@ -43,9 +31,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handlePageClick: page => {
-      dispatch(setCurrentPage(page));
-      dispatch(setPaginatedItems());
+    handleLoadMoreClick: () => {
+      dispatch(setOffset());
+      dispatch(fetchItems(store.getState().pagination.offset));
+      dispatch(getFilteredItems(store.getState().items.filter));
     }
   };
 };

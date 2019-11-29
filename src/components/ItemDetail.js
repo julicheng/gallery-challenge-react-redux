@@ -7,7 +7,6 @@ import { store } from "../App";
 class ItemDetail extends Component {
   // fetch item from api that matches the id the user has selected
   componentDidMount() {
-    console.log(this.props.match.params);
     const itemId = this.props.match.params.itemid;
     this.props.fetchItem(itemId);
   }

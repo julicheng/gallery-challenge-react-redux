@@ -1,5 +1,5 @@
 export const GET_FILTERED_ITEMS = "GET_FILTERED_ITEMS";
 export const FETCH_ITEMS = "FETCH_ITEMS";
 export const FETCH_ITEM = "FETCH_ITEM";
-export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
-export const SET_PAGINATED_ITEMS = "SET_PAGINATED_ITEMS";
+export const SET_OFFSET = "SET_OFFSET";
+export const SET_FILTER = "SET_FILTER";

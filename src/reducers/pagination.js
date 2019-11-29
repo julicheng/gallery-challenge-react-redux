@@ -1,16 +1,15 @@
-import { SET_CURRENT_PAGE } from "../actions/action_types";
+import { SET_OFFSET } from "../actions/action_types";
 
 const initialState = {
-  currentPage: 1,
-  itemsPerPage: 4
+  offset: 0
 };
 
 const pagination = (state = initialState, action) => {
   switch (action.type) {
-    case SET_CURRENT_PAGE:
+    case SET_OFFSET:
       return {
         ...state,
-        currentPage: action.payload
+        offset: (state.offset += 12)
       };
     default:
       return state;

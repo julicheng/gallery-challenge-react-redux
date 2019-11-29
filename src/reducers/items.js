@@ -1,13 +1,13 @@
 import {
   GET_FILTERED_ITEMS,
   FETCH_ITEMS,
-  SET_PAGINATED_ITEMS
+  SET_FILTER
 } from "../actions/action_types";
 
 const initialState = {
   allItems: [],
   filteredItems: [],
-  paginatedItems: []
+  filter: "none"
 };
 
 const items = (state = initialState, action) => {
@@ -17,15 +17,12 @@ const items = (state = initialState, action) => {
     case FETCH_ITEMS:
       return {
         ...state,
-        filteredItems: action.payload,
-        allItems: action.payload,
-        // paginatedItems: action.payload.slice(0, 4)
-        paginatedItems: action.payload
+        allItems: state.allItems.concat(action.payload)
       };
-    case SET_PAGINATED_ITEMS:
+    case SET_FILTER:
       return {
         ...state,
-        paginatedItems: action.payload
+        filter: action.payload
       };
     default:
       return state;

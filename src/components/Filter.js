@@ -1,10 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  getFilteredItems,
-  setCurrentPage,
-  setPaginatedItems
-} from "../actions";
+import { getFilteredItems, setFilter } from "../actions";
 
 const Filter = props => {
   return (
@@ -24,9 +20,8 @@ const Filter = props => {
 const mapDispatchToProps = dispatch => {
   return {
     handleFilterChange: evt => {
-      dispatch(getFilteredItems(evt.target.value));
-      dispatch(setCurrentPage());
-      dispatch(setPaginatedItems());
+      dispatch(setFilter(evt.target.value));
+      dispatch(getFilteredItems());
     }
   };
 };

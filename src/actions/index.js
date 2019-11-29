@@ -3,12 +3,12 @@ import {
   GET_FILTERED_ITEMS,
   FETCH_ITEMS,
   FETCH_ITEM,
-  SET_CURRENT_PAGE,
-  SET_PAGINATED_ITEMS
+  SET_OFFSET,
+  SET_FILTER
 } from "../actions/action_types";
 
-export const fetchItems = () => dispatch => {
-  fetch(`http://185.121.204.130:8080/api/media/`)
+export const fetchItems = (offset = 0) => dispatch => {
+  fetch(`http://185.121.204.130:8080/api/media?offset=` + offset)
     .then(res => res.json())
     .then(res =>
       dispatch({
@@ -19,6 +19,7 @@ export const fetchItems = () => dispatch => {
     .catch(function() {
       console.log("Error getting items");
     });
+  dispatch(getFilteredItems());
 };
 
 export const fetchItem = itemId => dispatch => {
@@ -39,10 +40,10 @@ export const fetchItem = itemId => dispatch => {
     });
 };
 
-export const getFilteredItems = evt => {
-  const filter = evt;
-
-  switch (filter) {
+export const getFilteredItems = () => {
+  const newfilter = store.getState().items.filter;
+  console.log(store.getState().items.allItems);
+  switch (newfilter) {
     case "none":
       return {
         type: GET_FILTERED_ITEMS,
@@ -50,7 +51,7 @@ export const getFilteredItems = evt => {
       };
     default:
       const newFilteredItems = store.getState().items.allItems.filter(item => {
-        return item.tags.includes(filter);
+        return item.tags.includes(newfilter);
       });
       return {
         type: GET_FILTERED_ITEMS,
@@ -59,24 +60,15 @@ export const getFilteredItems = evt => {
   }
 };
 
-export const setCurrentPage = (page = 1) => {
+export const setOffset = () => {
   return {
-    type: SET_CURRENT_PAGE,
-    payload: page
+    type: SET_OFFSET
   };
 };
 
-export const setPaginatedItems = () => {
-  const indexOfLastItem =
-    store.getState().pagination.currentPage *
-    store.getState().pagination.itemsPerPage;
-  const indexOfFirstItem =
-    indexOfLastItem - store.getState().pagination.itemsPerPage;
-  const paginatedItems = store
-    .getState()
-    .items.filteredItems.slice(indexOfFirstItem, indexOfLastItem);
+export const setFilter = evt => {
   return {
-    type: SET_PAGINATED_ITEMS,
-    payload: paginatedItems
+    type: SET_FILTER,
+    payload: evt
   };
 };

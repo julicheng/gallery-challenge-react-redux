@@ -88,36 +88,40 @@
       text-align: center;
     }
   }
-  .pagination {
+  nav {
     text-align: center;
-    padding: 0;
-    margin-top: 15px;
-    .page-item {
-      display: inline;
-      padding: 5px 10px;
-      margin: 3px;
-      border: 1px solid black;
-      border-radius: 5px;
-      text-decoration: none;
-      color: black;
-      .page-link {
-        text-decoration: none;
-        color: black;
-      }
-    }
-    .page-item:hover,
-    .page-item:active {
-      background: rgb(19, 18, 18);
-      text-decoration: none;
-      .page-link:active,
-      .page-link:link,
-      .page-link:focus,
-      .page-link:visited,
-      .page-link:hover {
-        color: white;
-      }
-    }
+    margin-top: 20px;
   }
+  // .pagination {
+  //   text-align: center;
+  //   padding: 0;
+  //   margin-top: 15px;
+  //   .page-item {
+  //     display: inline;
+  //     padding: 5px 10px;
+  //     margin: 3px;
+  //     border: 1px solid black;
+  //     border-radius: 5px;
+  //     text-decoration: none;
+  //     color: black;
+  //     .page-link {
+  //       text-decoration: none;
+  //       color: black;
+  //     }
+  //   }
+  //   .page-item:hover,
+  //   .page-item:active {
+  //     background: rgb(19, 18, 18);
+  //     text-decoration: none;
+  //     .page-link:active,
+  //     .page-link:link,
+  //     .page-link:focus,
+  //     .page-link:visited,
+  //     .page-link:hover {
+  //       color: white;
+  //     }
+  //   }
+  // }
 }
 
 @media (max-width: 1300px) {
