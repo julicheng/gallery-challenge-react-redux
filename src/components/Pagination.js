@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { store } from "../App";
-import { setOffset, fetchItems, getFilteredItems } from "../actions";
+import { setOffset, fetchItems } from "../actions";
 
 const Pagination = props => {
   const pageNumbers = [];
@@ -34,7 +34,6 @@ const mapDispatchToProps = dispatch => {
     handleLoadMoreClick: () => {
       dispatch(setOffset());
       dispatch(fetchItems(store.getState().pagination.offset));
-      dispatch(getFilteredItems(store.getState().items.filter));
     }
   };
 };

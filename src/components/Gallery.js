@@ -36,7 +36,6 @@ const mapDispatchToProps = dispatch => {
   return {
     init: () => {
       dispatch(fetchItems());
-      dispatch(getFilteredItems());
     }
   };
 };
