@@ -1,7 +1,12 @@
-import { SET_OFFSET } from "../actions/action_types";
+import {
+  SET_OFFSET,
+  SET_FETCH_TRUE,
+  SET_FETCH_FALSE
+} from "../actions/action_types";
 
 const initialState = {
-  offset: 0
+  offset: 0,
+  fetchFlag: true
 };
 
 const pagination = (state = initialState, action) => {
@@ -10,6 +15,16 @@ const pagination = (state = initialState, action) => {
       return {
         ...state,
         offset: (state.offset += 12)
+      };
+    case SET_FETCH_TRUE:
+      return {
+        ...state,
+        fetchFlag: true
+      };
+    case SET_FETCH_FALSE:
+      return {
+        ...state,
+        fetchFlag: false
       };
     default:
       return state;

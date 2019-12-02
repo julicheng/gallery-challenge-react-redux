@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchItem } from "../actions";
+import { fetchItem, setFetchFalse } from "../actions";
 
 class ItemDetail extends Component {
   // fetch item from api that matches the id the user has selected
   componentDidMount() {
     const itemId = this.props.match.params.itemid;
-    this.props.fetchItem(itemId);
+    console.log(itemId);
+
+    this.props.init(itemId);
   }
 
   render() {
@@ -40,8 +42,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchItem: itemId => {
+    init: itemId => {
       dispatch(fetchItem(itemId));
+      dispatch(setFetchFalse());
     }
   };
 };

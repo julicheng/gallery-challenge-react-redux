@@ -4,11 +4,16 @@ import {
   FETCH_ITEMS,
   FETCH_ITEM,
   SET_OFFSET,
-  SET_FILTER
+  SET_FILTER,
+  SET_FETCH_TRUE,
+  SET_FETCH_FALSE
 } from "../actions/action_types";
 
 export const fetchItems = (offset = 0) => async dispatch => {
   try {
+    if (store.getState().pagination.fetchFlag === false) {
+      return;
+    }
     const res = await fetch(
       `http://185.121.204.130:8080/api/media?offset=` + offset
     );
@@ -73,5 +78,17 @@ export const setFilter = evt => {
   return {
     type: SET_FILTER,
     payload: evt
+  };
+};
+
+export const setFetchTrue = evt => {
+  return {
+    type: SET_FETCH_TRUE
+  };
+};
+
+export const setFetchFalse = evt => {
+  return {
+    type: SET_FETCH_FALSE
   };
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { store } from "../App";
-import { setOffset, fetchItems } from "../actions";
+import { setOffset, fetchItems, setFetchTrue } from "../actions";
 
 const Pagination = props => {
   return (
@@ -14,6 +14,7 @@ const Pagination = props => {
 const mapDispatchToProps = dispatch => {
   return {
     handleLoadMoreClick: () => {
+      dispatch(setFetchTrue());
       dispatch(setOffset());
       dispatch(fetchItems(store.getState().pagination.offset));
     }
