@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getFilteredItems, setFilter } from "../actions";
+import { getFilter } from "../reducers/selectors";
 
 const Filter = props => {
   return (
@@ -23,7 +24,7 @@ const Filter = props => {
 
 const mapStateToProps = state => {
   return {
-    filter: state.items.filter
+    filter: getFilter(state)
   };
 };
 

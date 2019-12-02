@@ -5,7 +5,7 @@ import {
 } from "../actions/action_types";
 
 const initialState = {
-  offset: 0,
+  offset: 12,
   fetchFlag: true
 };
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchItem, setFetchFalse } from "../actions";
+import { getItem } from "../reducers/selectors";
 
 class ItemDetail extends Component {
   // fetch item from api that matches the id the user has selected
@@ -36,7 +37,7 @@ class ItemDetail extends Component {
 
 const mapStateToProps = state => {
   return {
-    item: state.item.item
+    item: getItem(state)
   };
 };
 

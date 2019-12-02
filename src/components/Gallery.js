@@ -4,6 +4,7 @@ import Filter from "./Filter";
 import Pagination from "./Pagination";
 import { connect } from "react-redux";
 import { fetchItems } from "../actions";
+import { getFilteredItems } from "../reducers/selectors";
 class Gallery extends Component {
   // fetch items from api and assign to allItems
   componentDidMount() {
@@ -26,7 +27,8 @@ class Gallery extends Component {
 
 const mapStateToProps = state => {
   return {
-    filteredItems: state.items.filteredItems
+    filteredItems: getFilteredItems(state),
+    offset: state.pagination.offset
   };
 };
 
