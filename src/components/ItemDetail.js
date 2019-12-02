@@ -8,8 +8,6 @@ class ItemDetail extends Component {
   // fetch item from api that matches the id the user has selected
   componentDidMount() {
     const itemId = this.props.match.params.itemid;
-    console.log(itemId);
-
     this.props.init(itemId);
   }
 
