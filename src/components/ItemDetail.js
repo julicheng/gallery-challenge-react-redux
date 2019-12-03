@@ -9,6 +9,7 @@ class ItemDetail extends Component {
   componentDidMount() {
     const itemId = this.props.match.params.itemid;
     this.props.init(itemId);
+    console.log(this.props.item);
   }
 
   render() {
@@ -16,14 +17,14 @@ class ItemDetail extends Component {
       <div className="itemDetail">
         <div className="imageSection">
           <img
-            src={this.props.item.url}
-            alt={this.props.item.title}
+            src={this.props.item.get("url")}
+            alt={this.props.item.get("title")}
             className="largeImage"
           />
         </div>
         <div className="descriptionSection">
-          <h2>{this.props.item.title}</h2>
-          <p>{this.props.item.description}</p>
+          <h2>{this.props.item.get("title")}</h2>
+          <p>{this.props.item.get("description")}</p>
           <h3>
             <Link to={"/"}>Back to gallery</Link>
           </h3>
