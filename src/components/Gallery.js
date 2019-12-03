@@ -9,7 +9,6 @@ class Gallery extends Component {
   // fetch items from api and assign to allItems
   componentDidMount() {
     this.props.init();
-    console.log(this.props.filteredItems);
   }
   render() {
     return (

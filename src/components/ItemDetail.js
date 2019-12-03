@@ -9,7 +9,6 @@ class ItemDetail extends Component {
   componentDidMount() {
     const itemId = this.props.match.params.itemid;
     this.props.init(itemId);
-    console.log(this.props.item);
   }
 
   render() {
