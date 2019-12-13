@@ -1,5 +1,5 @@
 import { FETCH_ITEM } from "../actions/action_types";
-import Immutable, { Map } from "immutable";
+import { fromJS, Map } from "immutable";
 
 const initialState = {
   item: Map({ title: "", description: "", url: "" })
@@ -8,7 +8,7 @@ const initialState = {
 const items = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ITEM:
-      return { ...state, item: Immutable.fromJS(action.payload) };
+      return { ...state, item: fromJS(action.payload) };
     default:
       return state;
   }

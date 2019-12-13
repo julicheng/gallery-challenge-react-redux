@@ -3,7 +3,7 @@ import {
   FETCH_ITEMS,
   SET_FILTER
 } from "../actions/action_types";
-import Immutable, { List } from "immutable";
+import { fromJS, List } from "immutable";
 
 const initialState = {
   allItems: List([]),
@@ -14,7 +14,7 @@ const initialState = {
 const items = (state = initialState, action) => {
   switch (action.type) {
     case GET_FILTERED_ITEMS:
-      return { ...state, filteredItems: Immutable.fromJS(action.payload) };
+      return { ...state, filteredItems: fromJS(action.payload) };
     case FETCH_ITEMS:
       return {
         ...state,
