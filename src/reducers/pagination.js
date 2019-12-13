@@ -1,15 +1,25 @@
+// @flow
 import {
   SET_OFFSET,
   SET_FETCH_TRUE,
   SET_FETCH_FALSE
 } from "../actions/action_types";
 
-const initialState = {
+type Pagination = {
+  offset: number,
+  fetchFlag: boolean
+};
+
+type Action = {
+  type: String
+};
+
+const initialState: Pagination = {
   offset: 12,
   fetchFlag: true
 };
 
-const pagination = (state = initialState, action) => {
+const pagination = (state: Pagination = initialState, action: Action) => {
   switch (action.type) {
     case SET_OFFSET:
       return {

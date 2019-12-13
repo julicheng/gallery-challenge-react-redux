@@ -3,11 +3,11 @@ import {
   FETCH_ITEMS,
   SET_FILTER
 } from "../actions/action_types";
-import Immutable from "immutable";
+import Immutable, { List } from "immutable";
 
 const initialState = {
-  allItems: Immutable.List([]),
-  filteredItems: Immutable.List([]),
+  allItems: List([]),
+  filteredItems: List([]),
   filter: "none"
 };
 

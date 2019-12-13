@@ -1,8 +1,8 @@
 import { FETCH_ITEM } from "../actions/action_types";
-import Immutable from "immutable";
+import Immutable, { Map } from "immutable";
 
 const initialState = {
-  item: Immutable.Map({ title: "", description: "", url: "" })
+  item: Map({ title: "", description: "", url: "" })
 };
 
 const items = (state = initialState, action) => {
