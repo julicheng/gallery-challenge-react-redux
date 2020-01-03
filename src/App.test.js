@@ -1,51 +1,24 @@
-import React from "react";
-import { shallow, mount, render } from "enzyme";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Filter from "./components/Filter";
-import Item from "./components/Item";
-import App from "./App";
+// import item from "./reducers/item";
+// import items from "./reducers/items";
+import pagination from "./reducers/pagination";
+// import {
+//   getOffset,
+//   getFilteredItems,
+//   getItem,
+//   getFilter
+// } from "./reducers/selectors";
 
-// console.log(component.debug());
-
-// const setUp = (props={}) => {
-//   const component = shallow(He)
-// }
-
-describe("Header Component", () => {
-  it("Should render without errors", () => {
-    const component = shallow(<Header />);
-    const wrapper = component.find("header img.logo");
-    expect(wrapper.length).toBe(1);
+describe("Pagination", () => {
+  test("should handle setting the offset", () => {
+    const initialState = {
+      offset: 12,
+      fetchFlag: true
+    };
+    const action = {
+      type: "SET_OFFSET"
+    };
+    expect(pagination(initialState, action)).toBe({ offset: 24 });
   });
+  test("should handle setting fetch to true");
+  test("should handle setting fetch to false");
 });
-
-// describe("Footer Component", () => {
-//   it("Should render without errors", () => {
-//     const component = shallow(<Footer />);
-//     const wrapper = component.find("footer h3");
-//     expect(wrapper.length).toBe(1);
-//   });
-// });
-
-// describe("Filter Component", () => {
-//   it("Should render without errors", () => {
-//     const props = {
-//       filter: "abstract",
-//       handleFilterChange: "#"
-//     };
-//     const component = shallow(<Filter props={props} />);
-//     console.log(component.debug());
-//     const wrapper = component.find("select");
-//     expect(wrapper.length).toBe(1);
-//   });
-// });
-
-// describe("Item Component", () => {
-//   it("It should render without errors", () => {
-//     const component = shallow(<Item />);
-//     console.log(component.debug());
-//     const wrapper = component.find("div");
-//     expect(wrapper.length).toBe(1);
-//   });
-// });
