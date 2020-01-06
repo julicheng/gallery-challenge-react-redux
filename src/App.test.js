@@ -17,8 +17,11 @@ describe("Pagination", () => {
     const action = {
       type: "SET_OFFSET"
     };
-    expect(pagination(initialState, action)).toBe({ offset: 24 });
+    expect(pagination(initialState, action)).toEqual({
+      fetchFlag: true,
+      offset: 24
+    });
   });
-  test("should handle setting fetch to true");
-  test("should handle setting fetch to false");
+  // test("should handle setting fetch to true");
+  // test("should handle setting fetch to false");
 });
