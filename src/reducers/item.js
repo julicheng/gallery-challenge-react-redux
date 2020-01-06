@@ -5,7 +5,7 @@ const initialState = {
   item: Map({ title: "", description: "", url: "" })
 };
 
-const items = (state = initialState, action) => {
+const item = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ITEM:
       return { ...state, item: fromJS(action.payload) };
@@ -14,4 +14,4 @@ const items = (state = initialState, action) => {
   }
 };
 
-export default items;
+export default item;
