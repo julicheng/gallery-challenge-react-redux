@@ -124,3 +124,40 @@ describe("Pagination", () => {
     });
   });
 });
+
+describe("Selectors", () => {
+  test("should handle getting the offset", () => {
+    const state = { pagination: { offset: 12 } };
+    expect(getOffset(state)).toBe(12);
+  });
+  test("should handle getting the filtered items", () => {
+    const state = {
+      items: {
+        filteredItems: List(["test", "test1", "test2", "test3", "test4"])
+      }
+    };
+    expect(getFilteredItems(state)).toEqual(
+      List(["test", "test1", "test2", "test3", "test4"])
+    );
+  });
+  test("should handle getting an item", () => {
+    const state = {
+      item: {
+        item: Map({
+          title: "test title",
+          description: "test description",
+          url: "#"
+        })
+      }
+    };
+    expect(getItem(state)).toEqual(
+      Map({ title: "test title", description: "test description", url: "#" })
+    );
+  });
+  test("should handle getting the filter", () => {
+    const state = {
+      items: { filter: "watercolour" }
+    };
+    expect(getFilter(state)).toBe("watercolour");
+  });
+});
