@@ -19,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "flow": "flow"
+    "flow": "flow",
+    "cypress": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,6 +39,7 @@
   },
   "devDependencies": {
     "babel-plugin-transform-export-extensions": "^6.22.0",
+    "cypress": "^3.8.1",
     "jest": "^24.9.0",
     "jest-cli": "^24.9.0",
     "react-test-renderer": "^16.12.0"
