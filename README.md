@@ -1,6 +1,6 @@
 # Gallery Challenge
 
-This is an art gallery app built using React, Redux and Immutable.js. It uses an API that fetches all the art pieces available and then filters through them by category depending on user input.
+This is an art gallery app built using React. The app also uses Redux, Immutable.js, Flow and Cypress. It uses an API that fetches all the art pieces available and then filters through them by category depending on user input.
 
 ## Features
 
