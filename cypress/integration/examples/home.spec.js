@@ -31,4 +31,8 @@ describe("Home page", () => {
       .get(".gallery div")
       .should("have.length", 36);
   });
+
+  it("have a footer with text of the year", () => {
+    cy.get("footer h3").should("have.text", "© 2020");
+  });
 });
