@@ -8,6 +8,10 @@ describe("Home page", () => {
     cy.get("header a h1").should("have.text", "Art Gallery");
   });
 
+  it("have 8 filter options", () => {
+    cy.get("select option").should("have.length", 8);
+  });
+
   it("have 12 gallery items on page load", () => {
     cy.get(".gallery div").should("have.length", 12);
   });
@@ -27,13 +31,4 @@ describe("Home page", () => {
       .get(".gallery div")
       .should("have.length", 36);
   });
-
-  //   it("deletes a todo", () => {
-  //     cy.get("li")
-  //       .first()
-  //       .find(".btn-danger")
-  //       .click()
-  //       .get("li")
-  //       .should("have.length", 1);
-  //   });
 });
