@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "babel-plugin-transform-export-extensions": "^6.22.0",
-    "cypress": "^3.8.1",
+    "cypress": "^12.11.0",
     "jest": "^24.9.0",
     "jest-cli": "^24.9.0",
     "react-test-renderer": "^16.12.0"
